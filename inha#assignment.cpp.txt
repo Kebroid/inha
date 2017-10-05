@@ -1,0 +1,117 @@
+/*
+Week #4 (?Control Structures Used IF | ELSE | SWITCH)
+By: Pulatov Azimjon
+Id: U1710014
+Date: 10/04/2017
+ 
+Fucntion main1 uses && and\or || boolean operarots
+Function main2 does not use any boolean operators
+
+Function main3 Checks For PREMIUM
+
+*/
+
+
+#include <iostream>
+using namespace std;
+
+int main1(void){
+	char married, gender;
+	int age;
+
+	cout << "Are you married Sir/Madam ?\n If yes insert M \n if not insert U\n";
+	cin >> married;
+
+	if (tolower(married) == 'm'){
+		cout << "*********************************";
+		cout << "WOW Congrats\n You got Insured!\n";
+	}
+	else {
+		cout << "What's Your Gender? \n If yes Male insert M \n if Female insert F\n";
+		cin >> gender;
+		cout << "How old are you?\n";
+		cin >> age;
+		if (tolower(gender) == 'm' && age>30 || tolower(gender) == 'm' && age>25){
+			cout << "\n*********************************\n";
+			cout << "You are Eligible\n";
+		}
+		else {
+			cout << "\n*********************************\n";
+			cout << "Sorry, You are NOT Eligible\n";
+		}
+	}
+
+	system("pause");
+	return 0;
+}
+/*########################################################################################*/
+int main2(void){
+	char married, gender;
+	int age;
+
+	cout << "Are you married Sir/Madam ?\n If yes insert M \n if not insert U\n";
+	cin >> married;
+
+	if (tolower(married) == 'm'){
+		cout << "*********************************\n";
+		cout << "WOW Congrats\n You got Insured!\n";
+	}
+	else {
+		cout << "What's Your Gender? \n If yes Male insert M \n if Female insert F\n";
+		cin >> gender;
+		cout << "How old are you?\n";
+		cin >> age;
+		if (tolower(gender) == 'm'){
+			if (age > 30){
+				cout << "\n*********************************\n";
+				cout << "You are Eligible\n";
+			}
+			else {
+				cout << "\n*********************************\n";
+				cout << "Sorry, You are NOT Eligible\n";
+			}
+		}
+
+		if (tolower(gender) == 'f'){
+			if (age > 25){
+				cout << "\n*********************************\n";
+				cout << "You are Eligible\n";
+			}
+			else {
+				cout << "\n*********************************\n";
+				cout << "Sorry, You are NOT Eligible\n";
+			}
+		}
+
+		else {
+			cout << "\n*********************************\n";
+			cout << "Sorry, You are NOT Eligible\n";
+		}
+	}
+
+	system("pause");
+	return 0;
+}
+
+/*########################################################################################*/
+int main(void){
+	int a = 5;
+	char k = 'K';
+
+	switch (a | k)
+	{
+
+	case  6 | 6 :
+		cout << "Error Occured\n";
+		break;
+
+	case  5 | 'K':
+		cout << "WOW IT WORKED!!!\n";
+		break;
+
+	default:
+		cout << "Did not Work!\n";
+		break;
+	}
+	system("pause");
+}
