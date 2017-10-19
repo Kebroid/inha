@@ -1,0 +1,172 @@
+<html>
+<head>
+	<title> Simple Quiz </title>	
+</head>
+<style>
+body {
+	background-color: powderblue;
+	text-align: center;
+}
+h1 {
+	text-align: center;
+}
+p {
+	text-align:center;
+	font-size: 20px;
+	font-family: courier;
+}
+p#first-question {
+	text-align: center;
+	margin-top: 50px;
+}
+pre p {
+	text-align: left;
+	border: 1px solid black;
+}
+pre p:hover {
+	background-color: yellow;
+	cursor: pointer;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+.savol {
+	display: none;
+} 
+#results {
+	display: none;
+}
+#start {
+	padding: 20px 50px;
+	background: black;
+	color: yellow;
+	font-size: 24px;
+	margin: 40px;
+	border-radius: 40px;
+	cursor: pointer;
+}
+</style>
+<body>
+	<h1> Quiz Tests </h1>
+	<p> Pass the quiz test and be aware how smart you are ! </p>
+	
+	<button id="start">
+		Start 
+	</button>
+
+	<div class="savol">
+		<p> 
+			<ins>Question Number <span class="current"></span></ins>: 
+		</p>
+		<p> What is the best film in the history of humanity according to IMDB ?</p>
+		<pre>
+			<p class="A" id="ans" onclick="contin('A')">A. Braveheart.</p>                       
+			<p class="B" id="ans" onclick="contin('B')">C. Titanic. </p>	
+			<p class="C" id="ans" onclick="contin('C')">B. The Imitation Game.</p>               
+			<p class="D" id="ans" onclick="contin('D')">D. The Shoushenk.</p>
+
+		</pre>
+	</div>
+
+	<div class="savol">
+		<p> 
+			<ins>Question Number <span class="current"></span></ins>: 
+		</p>
+		<p> What phone brand is most popular nowadays ? </p>
+		<pre>
+			<p class="A" id="ans" onclick="contin('A')">A. Iphone.</p>                       
+			<p class="C" id="ans" onclick="contin('C')">C. Samsung. </p>	
+			<p class="B" id="ans" onclick="contin('B')">B. Nokia.</p>               
+			<p class="D" id="ans" onclick="contin('D')">D. Motorola.</p>
+		</pre>
+	</div>
+
+	<div class="savol">
+		<p> 
+			<ins>Question Number <span class="current"></span></ins>: 
+		</p>
+		<p> What is the most picked hero above MMR 5000 ? </p>
+		<pre>
+			<p class="A" id="ans" onclick="contin('A')">A. Invoker.</p>                       
+			<p class="C" id="ans" onclick="contin('C')">C. Tinker. </p>	
+			<p class="B" id="ans" onclick="contin('B')">B. Barathrum.</p>               
+			<p class="D" id="ans" onclick="contin('D')">D.Io.</p>
+		</pre>
+	</div>
+
+	<div class="savol">
+		<p> 
+			<ins>Question Number <span class="current"></span></ins>: 
+		</p>
+		<p> Who is the best hacker in the world ? </p>
+		<pre>
+			<p class="A" id="ans" onclick="contin('A')">A. Mr bean.</p>                       
+			<p class="C" id="ans" onclick="contin('C')">C. Jasur. </p>	
+			<p class="B" id="ans" onclick="contin('B')">B. Azimjon.</p>               
+			<p class="D" id="ans" onclick="contin('D')">D. Not Given.</p>
+		</pre>
+	</div>
+
+	<div class="savol">
+		<p> 
+			<ins>Question Number <span class="current"></span></ins>: 
+		</p>
+		<p> When Spider was launched ? </p>
+		<pre>
+			<p class="A" id="ans" onclick="contin('A')">A. 2014.</p>                       
+			<p class="C" id="ans" onclick="contin('C')">C. 2015. </p>	
+			<p class="B" id="ans" onclick="contin('B')">B. 2016.</p>               
+			<p class="D" id="ans" onclick="contin('D')">D. 2017.</p>
+		</pre>
+	</div>
+
+	<div class="savol">
+		<h1> Time to know the results ! </h1>
+		<p> Congratulations ! You found <span id="score"></span> out of <span id="q_num"></span> questions. </p>
+		<p class="comment"> 
+			Comment: According to statistics few people can solve our problems but unlike them you solved all which means that you are far more intelligent than them and we calculated your IQ which turned out to be 247 ! That's fantastic and we want you keep in a such a temp , we believe that one day you will discover 'Time Travel Machine' !
+		</p>
+	</div>	
+<script>
+  var current = 0;
+  var answers = ['D', 'C', 'A', 'B','D'];
+  var user_ans = [];
+  var score = 0;
+  var questions = document.getElementsByClassName('savol').length - 1;
+  document.getElementById("q_num").innerText = questions;
+
+  function start(){
+  	document.getElementById("start").style.display = 'none';
+  	document.getElementsByClassName('savol')[current].style.display = 'block';
+  }
+  document.getElementById('start').onclick = start;
+
+  var results = document.getElementById("results")
+  function contin(answer){
+  	document.getElementsByClassName("savol")[current].style.display = 'none';
+  	current++;
+  	document.getElementsByClassName("savol")[current].style.display = 'block';
+  	user_ans.push(answer);
+  	if(current>questions-1){
+  		for(var i = 0; i <questions; i++){
+  			if (answers[i]==user_ans[i]) {
+  				score++;
+  			}
+  		document.getElementById('score').innerText = score;
+  		}
+  	}
+  }
+  for(var i = 0;i<questions;i++){
+  	document.getElementsByClassName("current")[i].innerText = i+1;
+  	if (results == score-1 || results == score-2) {
+  		document.write("Comment: According to statistics few people can solve our problems but unlike them you solved all which means that you are far more intelligent than them and we calculated your IQ which turned out to be 247 ! That's fantastic and we want you keep in a such a temp , we believe that one day you will discover 'Time Travel Machine' !");
+  	}
+  	else {
+  		document.write("You tried very well but this is not enough to be real genius , you may be tired or have been in uncomfortable situations , you can try our test later, good luck !");
+  	}
+
+  }
+</script>
+</body>
+</html>
